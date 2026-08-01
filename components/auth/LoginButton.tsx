@@ -1,5 +1,6 @@
 "use client";
 
+import "./LoginButton.module.scss"
 import { signIn } from "next-auth/react";
 
 export default function LoginButton() {

@@ -1,20 +1,15 @@
-import AuthPanel from "@/components/AuthPanel";
+import PageContainer from "@/components/layout/PageContainer";
 
 export default function Home() {
     return (
-        <main
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "100vh",
-                flexDirection: "column",
-                gap: "24px",
-            }}
-        >
-            <h1>Next.js WebApp Base</h1>
+        <PageContainer>
+            <main>
+                <h1>Welcome</h1>
 
-            <AuthPanel />
-        </main>
+                <p>
+                    Your Next.js application is ready.
+                </p>
+            </main>
+        </PageContainer>
     );
 }

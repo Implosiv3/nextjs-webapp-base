@@ -1,5 +1,7 @@
 Base project for any website I want to create.
 
+1. For the Google Login you need to go to Google Cloud, create a project, create an Oauth client with 'localhost:3000' and 'http://localhost:3000/api/auth/callback/google'm obtain the ID and SECRET and use them in `.env.local`. You can create your secret with `$ npx auth secret`.
+
 -------
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).

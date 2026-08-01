@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 
+import "./AuthPanel.module.scss"
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
