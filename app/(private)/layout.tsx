@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-
 import { redirect } from "next/navigation";
-
+import { ROUTES } from "@/lib/routes";
 import { auth } from "@/auth";
+
 
 interface PrivateLayoutProps {
     children: ReactNode;
@@ -14,7 +14,7 @@ export default async function PrivateLayout({
     const session = await auth();
 
     if (!session) {
-        redirect("/api/auth/signin");
+        redirect(ROUTES.LOGIN);
     }
 
     return <>{children}</>;

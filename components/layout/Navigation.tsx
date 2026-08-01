@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { ROUTES } from "@/lib/routes";
 import styles from "./Navigation.module.scss";
+
 
 export default function Navigation() {
     const pathname = usePathname();
@@ -14,15 +15,15 @@ export default function Navigation() {
             aria-label="Main navigation"
         >
             <Link
-                href="/"
-                className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
+                href={ROUTES.HOME}
+                className={`${styles.link} ${pathname === ROUTES.HOME ? styles.active : ""}`}
             >
                 Home
             </Link>
 
             <Link
-                href="/about"
-                className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
+                href={ROUTES.ABOUT}
+                className={`${styles.link} ${pathname === ROUTES.ABOUT ? styles.active : ""}`}
             >
                 About
             </Link>
