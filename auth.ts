@@ -3,12 +3,13 @@ import Google from "next-auth/providers/google";
 
 import { findUserByEmail } from "@/repositories/users";
 import { syncUser } from "@/services/users";
+import { env } from "@/env";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Google({
-            clientId: process.env.AUTH_GOOGLE_ID!,
-            clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+            clientId: env.AUTH_GOOGLE_ID,
+            clientSecret: env.AUTH_GOOGLE_SECRET,
         }),
     ],
 
@@ -17,8 +18,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user?.email && user.name) {
                 const dbUser = await syncUser({
                     email: user.email,
-                    name: user.name,
-                    image: user.image,
+                    displayName: user.name,
+                    imageUrl: user.image,
                 });
 
                 token.userId = dbUser.id;

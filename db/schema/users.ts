@@ -14,7 +14,7 @@ export const users = pgTable("users", {
         .notNull()
         .unique(),
 
-    name: text("name")
+    displayName: text("display_name")
         .notNull(),
 
     imageUrl: text("image_url"),

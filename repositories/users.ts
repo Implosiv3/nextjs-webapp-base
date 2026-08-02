@@ -25,19 +25,3 @@ export async function createUser(
 
     return result[0];
 }
-
-export async function updateUser(
-    id: string,
-    data: Pick<NewUser, "name" | "imageUrl">,
-): Promise<User> {
-    const result = await db
-        .update(users)
-        .set({
-            ...data,
-            updatedAt: new Date(),
-        })
-        .where(eq(users.id, id))
-        .returning();
-
-    return result[0];
-}

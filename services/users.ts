@@ -3,35 +3,26 @@ import { User } from "@/db/schema/users";
 import {
     createUser,
     findUserByEmail,
-    updateUser,
 } from "@/repositories/users";
 
-export async function syncUser(user: {
+export interface SyncUserInput {
     email: string;
-    name: string;
-    image?: string | null;
-}): Promise<User> {
+    displayName: string;
+    imageUrl?: string | null;
+}
+
+export async function syncUser(
+    user: SyncUserInput,
+): Promise<User> {
     const existingUser = await findUserByEmail(user.email);
 
-    if (!existingUser) {
-        return createUser({
-            email: user.email,
-            name: user.name,
-            imageUrl: user.image ?? null,
-        });
-    }
-
-    const imageUrl = user.image ?? null;
-
-    if (
-        existingUser.name === user.name &&
-        existingUser.imageUrl === imageUrl
-    ) {
+    if (existingUser) {
         return existingUser;
     }
 
-    return updateUser(existingUser.id, {
-        name: user.name,
-        imageUrl,
+    return createUser({
+        email: user.email,
+        displayName: user.displayName,
+        imageUrl: user.imageUrl ?? null,
     });
 }
